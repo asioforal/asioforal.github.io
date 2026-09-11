@@ -1,0 +1,2119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ASIOFORAL</title>
+
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f3f3f3;
+
+            color: #111;
+        }
+
+
+        /* =========================================
+           TOP BANNER
+        ========================================= */
+
+        .top-banner {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 190px;
+
+            background-color: #222;
+
+            background-image:
+                url("img/banner.png");
+
+            background-size: cover;
+
+            background-position: center;
+
+            overflow: visible;
+
+            z-index: 5;
+        }
+
+
+        /*
+         * Capa sutil para que el banner
+         * tenga un acabado más limpio.
+         */
+
+        .top-banner::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,.08),
+                    rgba(0,0,0,0)
+                );
+
+            pointer-events: none;
+        }
+
+
+
+        /* =========================================
+           LAYOUT PRINCIPAL
+        ========================================= */
+
+        .site-layout {
+
+            display: grid;
+
+            grid-template-columns:
+                300px minmax(0, 1fr);
+
+            align-items: start;
+        }
+
+
+
+        /* =========================================
+           PERFIL LATERAL
+        ========================================= */
+
+        .profile {
+
+            position: relative;
+
+            width: 300px;
+
+            min-height:
+                calc(100vh - 190px);
+
+            padding:
+                75px 35px 45px;
+
+            background: #fff;
+
+            border-right:
+                1px solid #e5e5e5;
+
+            display: flex;
+
+            flex-direction: column;
+
+            z-index: 10;
+        }
+
+
+        /*
+         * FOTO DE PERFIL
+         *
+         * Se coloca de forma absoluta para que
+         * quede entre el banner y el perfil.
+         */
+
+        .profile-image {
+
+            position: absolute;
+
+            width: 105px;
+            height: 105px;
+
+            left: 35px;
+
+            top: -55px;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            border:
+                5px solid #fff;
+
+            background: #ddd;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,.12);
+
+            z-index: 20;
+        }
+
+
+        .profile h1 {
+
+            font-size: 26px;
+
+            line-height: 1.1;
+
+            margin-bottom: 8px;
+        }
+
+
+        .profile-role {
+
+            font-size: 14px;
+
+            color: #777;
+
+            margin-bottom: 25px;
+        }
+
+
+        .profile-description {
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            color: #444;
+
+            margin-bottom: 30px;
+        }
+
+
+        .profile-info {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 15px;
+
+            font-size: 13px;
+        }
+
+
+        .profile-info span {
+
+            color: #999;
+
+            display: block;
+
+            margin-bottom: 3px;
+        }
+
+
+        .profile-info strong {
+
+            font-weight: 500;
+
+            color: #222;
+        }
+
+
+        .social {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+            margin-top: auto;
+
+            padding-top: 40px;
+        }
+
+
+        .social a {
+
+            color: #111;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            border-bottom:
+                1px solid #111;
+
+            padding-bottom: 2px;
+
+            transition:
+                opacity .2s ease;
+        }
+
+
+        .social a:hover {
+
+            opacity: .45;
+        }
+
+
+
+        /* =========================================
+           CONTENIDO PRINCIPAL
+        ========================================= */
+
+        main {
+
+            min-width: 0;
+
+            padding:
+                45px;
+        }
+
+
+        .header {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            margin-bottom: 40px;
+        }
+
+
+        .header h2 {
+
+            font-size: 18px;
+
+            font-weight: 600;
+        }
+
+
+        .header p {
+
+            font-size: 13px;
+
+            color: #888;
+        }
+
+
+
+        /* =========================================
+           GRID DE PROYECTOS
+        ========================================= */
+
+        .projects {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 20px;
+        }
+
+
+        .project {
+
+            display: block;
+
+            text-decoration: none;
+
+            color: inherit;
+
+            background: #fff;
+
+            overflow: hidden;
+
+            border-radius: 8px;
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+        }
+
+
+        .project:hover {
+
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(0,0,0,.08);
+        }
+
+
+        .project-image {
+
+            display: block;
+
+            width: 100%;
+
+            aspect-ratio: 16 / 10;
+
+            object-fit: cover;
+
+            background: #ddd;
+        }
+
+
+        .project-info {
+
+            padding: 20px;
+        }
+
+
+        .project-info h3 {
+
+            font-size: 17px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .project-info p {
+
+            font-size: 13px;
+
+            color: #777;
+        }
+
+
+
+        /* =========================================
+           VISOR DE PROYECTOS
+        ========================================= */
+
+        .project-page {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: #f3f3f3;
+
+            z-index: 100;
+
+            overflow-y: auto;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transform:
+                translateY(20px);
+
+            transition:
+                opacity .3s ease,
+                transform .3s ease,
+                visibility .3s;
+        }
+
+
+        .project-page:target {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transform:
+                translateY(0);
+        }
+
+
+
+        /* =========================================
+           CABECERA DEL PROYECTO
+        ========================================= */
+
+        .project-top {
+
+            position: sticky;
+
+            top: 0;
+
+            height: 70px;
+
+            padding:
+                0 35px;
+
+            background:
+                rgba(255,255,255,.95);
+
+            backdrop-filter:
+                blur(10px);
+
+            border-bottom:
+                1px solid #ddd;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            z-index: 10;
+        }
+
+
+        .project-top h2 {
+
+            font-size: 16px;
+
+            font-weight: 600;
+        }
+
+
+        .close {
+
+            width: 40px;
+            height: 40px;
+
+            border-radius: 50%;
+
+            background: #111;
+
+            color: #fff;
+
+            text-decoration: none;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 21px;
+
+            line-height: 1;
+
+            transition:
+                transform .2s ease;
+        }
+
+
+        .close:hover {
+
+            transform:
+                rotate(90deg);
+        }
+
+
+
+        /* =========================================
+           CONTENIDO DEL PROYECTO
+        ========================================= */
+
+        .project-content {
+
+            width:
+                min(1100px, 90%);
+
+            margin:
+                50px auto 100px;
+
+            background: #000000;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 2px;
+        }
+
+
+
+        /* =========================================
+           INTRO DEL PROYECTO
+        ========================================= */
+
+        .project-title {
+
+            padding:
+                70px 50px;
+
+            text-align: center;
+
+            background: #fff;
+        }
+
+
+        .project-title h1 {
+
+            font-size: 42px;
+
+            line-height: 1.1;
+
+            margin-bottom: 15px;
+        }
+
+
+        .project-title p {
+
+            max-width: 600px;
+
+            margin:
+                0 auto;
+
+            color: #777;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+
+
+        /* =========================================
+           IMAGEN INDIVIDUAL
+        ========================================= */
+
+        .image-single {
+
+            width: 100%;
+
+            margin: 0;
+
+            padding: 0;
+
+            line-height: 0;
+
+            background: #fff;
+        }
+
+
+        .image-single img {
+
+            display: block;
+
+            width: 100%;
+
+            height: auto;
+
+            margin: 0;
+
+            padding: 0;
+
+            object-fit: contain;
+        }
+
+
+
+        /* =========================================
+           GRUPO HORIZONTAL
+        ========================================= */
+
+        .image-row {
+
+            width: 100%;
+
+            display: flex;
+
+            flex-direction: row;
+
+            gap: 2px;
+
+            margin: 0;
+
+            padding: 0;
+
+            background: #000000;
+
+            line-height: 0;
+        }
+
+
+        .image-row img {
+
+            display: block;
+
+            width: 0;
+
+            min-width: 0;
+
+            flex:
+                1 1 0;
+
+            height: auto;
+
+            margin: 0;
+
+            padding: 0;
+
+            object-fit: contain;
+
+            background: #000000;
+        }
+
+
+
+        /* =========================================
+           TEXTO DEL PROYECTO
+        ========================================= */
+
+        .project-text {
+
+            padding:
+                60px;
+
+            background: #fff;
+
+            color: #444;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+
+        .project-text h3 {
+
+            font-size: 22px;
+
+            color: #111;
+
+            margin-bottom: 15px;
+        }
+
+
+
+
+        
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 1100px) {
+
+             .projects {
+
+             grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+         }
+
+
+        main {
+
+            padding: 35px;
+        
+        }
+
+        }
+
+
+        /* =========================================
+        TABLET / MOVIL
+        PERFIL COMPACTO
+        ========================================= */
+
+        @media (max-width: 900px) {
+
+            .top-banner {
+
+                height: 180px;
+            }
+
+
+            /*
+            * El layout deja de ser de dos columnas.
+            */
+
+            .site-layout {
+
+                display: block;
+            }
+
+
+            /*
+            * PERFIL COMPACTO
+            *
+            * Solo se muestra:
+            * - imagen
+            * - nombre
+            * - rol
+            */
+
+            .profile {
+
+                width: 100%;
+
+                min-height: 0;
+
+                height: 125px;
+
+                padding:
+                    25px 30px 20px 155px;
+
+                border-right: none;
+
+                border-bottom:
+                    1px solid #ddd;
+
+                display: flex;
+
+                justify-content: center;
+
+                align-items: flex-start;
+
+                position: relative;
+            }
+
+
+            /*
+            * Foto de perfil
+            */
+
+            .profile-image {
+
+                width: 90px;
+                height: 90px;
+
+                left: 30px;
+
+                top: 18px;
+
+                border-width: 4px;
+            }
+
+
+            /*
+            * Nombre
+            */
+
+            .profile h1 {
+
+                font-size: 24px;
+
+                line-height: 1.1;
+
+                margin-bottom: 7px;
+            }
+
+
+            /*
+            * Rol
+            */
+
+            .profile-role {
+
+                font-size: 13px;
+
+                margin-bottom: 0;
+
+                color: #777;
+            }
+
+
+            /*
+            * Ocultamos todo lo demás.
+            */
+
+            .profile-description,
+            .profile-info,
+            .social {
+
+                display: none;
+            }
+
+
+            /*
+            * Contenido principal
+            */
+
+            main {
+
+                margin-left: 0;
+
+                padding: 30px;
+            }
+
+
+            .projects {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+
+        /* =========================================
+        MOVIL
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            .top-banner {
+
+                height: 145px;
+
+                background-position:
+                    center center;
+            }
+
+
+            /*
+            * PERFIL COMPACTO EN MOVIL
+            */
+
+            .profile {
+
+                height: 105px;
+
+                padding:
+                    20px 20px 20px 125px;
+
+                justify-content: center;
+            }
+
+
+            /*
+            * Imagen
+            */
+
+            .profile-image {
+
+                width: 75px;
+                height: 75px;
+
+                left: 20px;
+
+                top: 15px;
+
+                border-width: 4px;
+            }
+
+
+            /*
+            * Nombre
+            */
+
+            .profile h1 {
+
+                font-size: 21px;
+
+                margin-bottom: 5px;
+            }
+
+
+            /*
+            * Rol
+            */
+
+            .profile-role {
+
+                font-size: 12px;
+
+                line-height: 1.4;
+            }
+
+
+            /*
+            * Contenido
+            */
+
+            main {
+
+                padding: 20px;
+            }
+
+
+            .header {
+
+                flex-direction: column;
+
+                align-items:
+                    flex-start;
+
+                gap: 8px;
+
+                margin-bottom: 25px;
+            }
+
+
+            .projects {
+
+                grid-template-columns: 1fr;
+
+                gap: 15px;
+            }
+
+
+            .project-info {
+
+                padding: 17px;
+            }
+
+
+            .project-info h3 {
+
+                font-size: 16px;
+            }
+
+
+            /*
+            * Visor de proyectos
+            */
+
+            .project-content {
+
+                width: 100%;
+
+                margin:
+                    0 auto 50px;
+            }
+
+
+            .project-title {
+
+                padding:
+                    45px 25px;
+            }
+
+
+            .project-title h1 {
+
+                font-size: 30px;
+            }
+
+
+            .project-text {
+
+                padding:
+                    35px 25px;
+            }
+
+
+            .project-top {
+
+                padding:
+                    0 20px;
+            }
+
+
+            .image-row {
+
+                gap: 1px;
+            }
+
+        }
+
+        
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         TOP BANNER
+    ========================================== -->
+
+    <header class="top-banner">
+
+    </header>
+
+
+
+    <!-- =========================================
+         LAYOUT
+    ========================================== -->
+
+    <div class="site-layout">
+
+
+        <!-- =====================================
+             PERFIL
+        ====================================== -->
+
+        <aside class="profile">
+
+
+            <img
+                src="img/perfil.jpg"
+                alt="Foto de perfil"
+                class="profile-image"
+            >
+
+
+            <h1>
+                Isaac Pravia
+            </h1>
+
+
+            <div class="profile-role">
+
+                Designer · 3D Generalist · Creative
+
+            </div>
+
+
+            <p class="profile-description">
+
+                Graphic & 3D Designer with 2+ years of experience specializing in high-converting static and animated banners for the iGaming and Online Casino industry. Proficient across the full 3D pipeline. Combines strong asset generation and VFX techniques with data-driven design to boost CTR, optimize multi-format adaptations, and deliver high-polish acquisition and retention campaigns under tight deadlines.
+
+            </p>
+
+
+            <div class="profile-info">
+
+
+                <div>
+
+                    <span>
+                        Location
+                    </span>
+
+                    <strong>
+                        La Línea de la Concepción, España.
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Email
+                    </span>
+
+                    <strong>
+                        asioforal@gmail.com
+                    </strong>
+
+                </div>
+
+
+                <!--
+                
+                <div>
+
+                    <span>
+                        Especialidad
+                    </span>
+
+                    <strong>
+                        Branding / Digital / Art Direction
+                    </strong>
+
+                </div>
+                
+                -->
+
+
+                <div>
+
+                    <span>
+                        Experiencia
+                    </span>
+
+                    <strong>
+                        2021 — 2026
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="social">
+
+                <a href="#">
+                    Instagram
+                </a>
+
+                <a href="#">
+                    Behance
+                </a>
+
+                <a href="#">
+                    LinkedIn
+                </a>
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- =====================================
+             PORTFOLIO
+        ====================================== -->
+
+        <main>
+
+
+            <div class="header">
+
+                <h2>
+                    Selected Projects
+                </h2>
+
+                <p>
+                    2024 — 2026
+                </p>
+
+            </div>
+
+
+            <section class="projects">
+
+
+                <!-- PROYECTO 01 -->
+
+                <a
+                    href="#proyecto-01"
+                    class="project"
+                >
+
+                    <img
+                        src="img/proyecto-01-cover.png"
+                        alt="Proyecto 01"
+                        class="project-image"
+                    >
+
+                    <div class="project-info">
+
+                        <h3>
+                            Casino Banner Design
+                        </h3>
+
+                        <p>
+                            Branding / Art Direction / Social Media
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- PROYECTO 02 -->
+
+                <a
+                    href="#proyecto-02"
+                    class="project"
+                >
+
+                    <img
+                        src="img/proyecto-02-cover.png"
+                        alt="Proyecto 02"
+                        class="project-image"
+                    >
+
+                    <div class="project-info">
+
+                        <h3>
+                            Thumbnail Design
+                        </h3>
+
+                        <p>
+                            Slot / Casino
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- PROYECTO 03 -->
+
+                <a
+                    href="#proyecto-03"
+                    class="project"
+                >
+
+                    <img
+                        src="img/proyecto-03-cover.png"
+                        alt="Proyecto 03"
+                        class="project-image"
+                    >
+
+                    <div class="project-info">
+
+                        <h3>
+                            Email Header Design
+                        </h3>
+
+                        <p>
+                            Editorial / Graphic Design
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- PROYECTO 04 -->
+
+                <a
+                    href="#proyecto-04"
+                    class="project"
+                >
+
+                    <img
+                        src="img/proyecto-04-cover.png"
+                        alt="Proyecto 04"
+                        class="project-image"
+                    >
+
+                    <div class="project-info">
+
+                        <h3>
+                            Icons & Badges
+                        </h3>
+
+                        <p>
+                            Campaign / Motion / Digital
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- PROYECTO 05 -->
+
+                <a
+                    href="#proyecto-05"
+                    class="project"
+                >
+
+                    <img
+                        src="img/proyecto-05-cover.png"
+                        alt="Proyecto 05"
+                        class="project-image"
+                    >
+
+                    <div class="project-info">
+
+                        <h3>
+                            Animated Banners
+                        </h3>
+
+                        <p>
+                            Motion / Animation
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+            </section>
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- ==================================================
+         PROYECTO 01
+    =================================================== -->
+
+    <article
+        id="proyecto-01"
+        class="project-page"
+    >
+
+        <div class="project-top">
+
+            <h2>
+                Proyecto 01
+            </h2>
+
+            <a
+                href="#"
+                class="close"
+            >
+                ×
+            </a>
+
+        </div>
+
+
+        <div class="project-content">
+
+             <div class="image-single">
+
+                <img
+                    src="img/casino-banners/Frame 1.png"
+                    alt=""
+                >
+
+            </div>
+            
+            <div class="image-row">
+
+                <img
+                    src="img/casino-banners/flash-sale-xmas.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/xmas-paris-offer-banner.png"
+                    alt=""
+                >
+
+                 <img
+                    src="img/casino-banners/xmas-refer-a-friend-lobby-banner.png"
+                    alt=""
+                >
+
+            </div>
+
+
+             <div class="image-row">
+
+                <img
+                    src="img/casino-banners/happy-new-year-form-wow-portrait-story.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/santas-spin-1080x1920-instagram-story.png"
+                    alt=""
+                >
+
+                 <img
+                    src="img/casino-banners/holiday-hustle-1080x1920-instagram-story.png"
+                    alt=""
+                >
+
+                 <img
+                    src="img/casino-banners/merry-christmas-form-wow-portrait-story.png"
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="image-single">
+
+                <img
+                    src="img/casino-banners/xmas-megawheel-midbanner.png"
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="image-row">
+
+                <img
+                    src="img/casino-banners/1200x1200-welcome-offer-1.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/1200x1200-welcome-offer-2.png"
+                    alt=""
+                >
+
+                 <img
+                    src="img/casino-banners/1200x1200-welcome-offer-3.png"
+                    alt=""
+                >
+
+                 <img
+                    src="img/casino-banners/1200x1200-welcome-offer-4.png"
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="image-single">
+
+                <img
+                    src="img/casino-banners/april-galaxsys-mid-banner.png"
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="image-row">
+
+                <img
+                    src="img/casino-banners/1200x1500-nga-banana-x.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/1200x1500-nga-grand-buffalo-hold-and-win.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/1200x1500-nga-farmyard-fortunes-spin-n-win.png"
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="image-row">
+
+                <img
+                    src="img/casino-banners/1200x1500-portrait-20260407.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/1200x1500-portrait-20260408.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/1200x1500-social-creative-20260403-1.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/1200x1500-social-creative-20260410.png"
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="image-single">
+
+                <img
+                    src="img/casino-banners/gotw-ultimatedragoninferno-mid-banner-desktop.png"
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="image-row">
+
+                <img
+                    src="img/casino-banners/auto-roulet-tall.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/grand-b-bacc-tall.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/gv-blackjack-tall.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/gv-roulette-tall.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/live-roulet-tall.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/royal-roulette-tall.png"
+                    alt=""
+                >
+
+            </div>
+         
+
+            <div class="image-row">
+
+                <img
+                    src="img/casino-banners/64-wow-coins-hold-and-win-200000-tall-tile-final-wow-exclusive.jpg"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/sweet-jar-combo-wow-tall-tile-final-wow-exclusive.jpg"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/tall-rise-of-cetus-exclusive.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/wow-beast-shooter.jpg"
+                    alt=""
+                >
+
+                <img
+                    src="img/casino-banners/wow-crystal-777-tall-tile-final-wow-exclusive.jpg"
+                    alt=""
+                >
+
+
+            </div>
+
+
+            <div class="image-single">
+
+                <img
+                    src="img/Frame 17.png"
+                    alt=""
+                >
+
+            </div>
+
+            <!--
+
+            <div class="project-text">
+
+                <h3>
+                    About the project
+                </h3>
+
+                <p>
+                    Aquí puedes explicar el concepto,
+                    proceso creativo y desarrollo
+                    del proyecto.
+                </p>
+
+            </div>
+
+            -->
+
+        </div>
+
+    </article>
+
+
+
+    <!-- ==================================================
+         PROYECTO 02
+    =================================================== -->
+
+    <article
+        id="proyecto-02"
+        class="project-page"
+    >
+
+        <div class="project-top">
+
+            <h2>
+                Proyecto 02
+            </h2>
+
+            <a
+                href="#"
+                class="close"
+            >
+                ×
+            </a>
+
+        </div>
+
+
+        <div class="project-content">
+
+
+            <div class="image-single">
+
+                <img
+                    src="img/tn/tn-f.png"
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="image-row">
+
+                <img
+                    src="img/tn/ex/bullions-of-gold-hold-and-win-exclu.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/tn/ex/coins-of-buffalo-power-hold&win-exclusive.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/tn/ex/coins-of-leprechaun-hold-&-win-exclusive.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/tn/ex/coins-of-ra-deluxe-hold-n-win-exclusive.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/tn/ex/coins-of-ra-power-hold&win-exclusive.png"
+                    alt=""
+                >
+
+                 <img
+                    src="img/tn/ex/gold-nugget-rush-hold-and-win-exclu.png"
+                    alt=""
+                >
+
+                 <img
+                    src="img/tn/ex/pots-of-great-fortune-exclu.png"
+                    alt=""
+                >
+
+                 <img
+                    src="img/tn/ex/tutankhamuns-tomb-hold-&-win-exclusive.png"
+                    alt=""
+                >
+
+            </div>
+
+
+             <div class="image-row">
+
+                <img
+                    src="img/tn/6-tokens-of-gold-mystery-joker-link-n-win.jpg"
+                    alt=""
+                >
+
+                <img
+                    src="img/tn/big-fruit-theory.jpg"
+                    alt=""
+                >
+
+                <img
+                    src="img/tn/break-away-max.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/tn/captain-bones-big-bounty.jpg"
+                    alt=""
+                > 
+
+            </div>
+
+
+            <div class="image-row">
+
+                <img
+                    src="img/tn/cleos-coins.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/tn/clovers-clovers.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/tn/wild-piggy-bank.png"
+                    alt=""
+                >
+
+                 <img
+                    src="img/tn/wolf-diamond.jpg"
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="image-row">
+
+                <img
+                    src="img/tn/golden-car-fortunes.jpg"
+                    alt=""
+                >
+
+                <img
+                    src="img/tn/ghost-pigger.jpg"
+                    alt=""
+                >
+
+                <img
+                    src="img/tn/pyramid-of-ra.jpg"
+                    alt=""
+                >
+
+                <img
+                    src="img/tn/harley-quickwin.png"
+                    alt=""
+                >
+
+                 <img
+                    src="img/tn/sky-raiders-power-combo.jpg"
+                    alt=""
+                >
+
+                 <img
+                    src="img/tn/taco-hell.png"
+                    alt=""
+                >
+
+                 <img
+                    src="img/tn/queen-of-the-sphinx.jpg"
+                    alt=""
+                >
+
+
+            </div>
+
+
+            <div class="image-single">
+
+                <img
+                    src="img/Frame 17.png"
+                    alt=""
+                >
+
+            </div>
+
+            <!--
+
+
+            <div class="project-text">
+
+                <h3>
+                    Concept
+                </h3>
+
+                <p>
+                    Descripción del concepto,
+                    estrategia y proceso de diseño.
+                </p>
+
+            </div>
+
+            -->
+
+        </div>
+
+    </article>
+
+
+
+    <!-- ==================================================
+         PROYECTO 03
+    =================================================== -->
+
+    <article
+        id="proyecto-03"
+        class="project-page"
+    >
+
+        <div class="project-top">
+
+            <h2>
+                Proyecto 03
+            </h2>
+
+            <a
+                href="#"
+                class="close"
+            >
+                ×
+            </a>
+
+        </div>
+
+
+        <div class="project-content">
+
+
+            <div class="image-single">
+
+                <img
+                    src="img/proyecto-03-01.png"
+                    alt=""
+                >
+
+            </div>
+
+
+            <!--
+            
+            <div class="project-text">
+
+                <h3>
+                    About
+                </h3>
+
+                <p>
+                    Desarrollo del sistema gráfico,
+                    aplicaciones y piezas finales.
+                </p>
+
+            </div>
+            
+            -->
+
+        </div>
+
+    </article>
+
+
+
+    <!-- ==================================================
+         PROYECTO 04
+    =================================================== -->
+
+    <article
+        id="proyecto-04"
+        class="project-page"
+    >
+
+        <div class="project-top">
+
+            <h2>
+                Proyecto 04
+            </h2>
+
+            <a
+                href="#"
+                class="close"
+            >
+                ×
+            </a>
+
+        </div>
+
+
+        <div class="project-content">
+
+
+            <div class="image-single">
+
+                <img
+                    src="img/proyecto-04-01.png"
+                    alt=""
+                >
+
+            </div>
+            
+   
+            <!--
+
+            <div class="image-row">
+
+                <img
+                    src="img/proyecto-04-02.gif"
+                    alt=""
+                >
+
+                <img
+                    src="img/proyecto-04-03.gif"
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="image-single">
+
+                <img
+                    src="img/proyecto-04-04.png"
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="image-row">
+
+                <img
+                    src="img/proyecto-04-05.gif"
+                    alt=""
+                >
+
+                <img
+                    src="img/proyecto-04-06.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/proyecto-04-07.png"
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="image-row">
+
+                <img
+                    src="img/proyecto-04-08.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/proyecto-04-09.gif"
+                    alt=""
+                >
+
+                <img
+                    src="img/proyecto-04-10.png"
+                    alt=""
+                >
+
+                <img
+                    src="img/proyecto-04-11.gif"
+                    alt=""
+                >
+
+            </div>
+
+
+           
+            
+            <div class="project-text">
+
+                <h3>
+                    Project details
+                </h3>
+
+                <p>
+                    Información adicional sobre
+                    la campaña, dirección de arte
+                    y piezas desarrolladas.
+                </p>
+
+            </div>
+            
+            -->
+
+        </div>
+
+    </article>
+
+
+
+    <!-- ==================================================
+         PROYECTO 05
+    =================================================== -->
+
+    <article
+        id="proyecto-05"
+        class="project-page"
+    >
+
+        <div class="project-top">
+
+            <h2>
+                Proyecto 05
+            </h2>
+
+            <a
+                href="#"
+                class="close"
+            >
+                ×
+            </a>
+
+        </div>
+
+
+        
+        <div class="project-content">
+
+
+            <div class="image-single">
+
+                <img
+                    src="img/gif/ab-f.png"
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="image-row">
+
+                <img
+                    src="img/gif/ezgif-220739a8f3fcbb9f.gif"
+                    alt=""
+                >
+
+                <img
+                    src="img/gif/ezgif-22eaa8a631bdbc1c.gif"
+                    alt=""
+                >
+
+                <img
+                    src="img/gif/ezgif-293a4480b60f90f9.gif"
+                    alt=""
+                >
+
+            </div>
+
+
+
+            <div class="image-single">
+
+                <img
+                    src="img/Frame 17.png"
+                    alt=""
+                >
+
+            </div>
+
+            <!--
+
+            <div class="project-text">
+
+                <h3>
+                    TEST
+                </h3>
+
+                <p>
+                    Test.
+                </p>
+
+            </div>
+
+            -->
+
+        </div>
+
+
+    </article>
+
+
+</body>
+
+</html>
