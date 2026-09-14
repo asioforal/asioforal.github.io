@@ -10,7 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>ASIOFORAL :D</title>
+    <title>ASIOFORAL</title>
 
 
     <style>
@@ -628,46 +628,26 @@
         ========================================= */
 
         .image-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    background: #000;
+    line-height: 0;
+    overflow: hidden;
+}
 
-            width: 100%;
-
-            display: flex;
-
-            flex-direction: row;
-
-            gap: 2px;
-
-            margin: 0;
-
-            padding: 0;
-
-            background: #000000;
-
-            line-height: 0;
-        }
-
-
-        .image-row img {
-
-            display: block;
-
-            width: 0;
-
-            min-width: 0;
-
-            flex:
-                1 1 0;
-
-            height: auto;
-
-            margin: 0;
-
-            padding: 0;
-
-            object-fit: contain;
-
-            background: #000000;
-        }
+.image-row img {
+    display: block;
+    flex: none;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    object-fit: cover;
+    background: #000;
+}
 
 
 
@@ -2368,6 +2348,125 @@
 
     </article>
 
+
+
+    <script>
+
+    function justifyImageRows() {
+
+        const rows = document.querySelectorAll('.image-row');
+
+        rows.forEach(row => {
+
+            const images = [...row.querySelectorAll('img')];
+
+            if (!images.length) return;
+
+            const gap = parseFloat(
+                getComputedStyle(row).gap
+            ) || 0;
+
+            const rowWidth = row.clientWidth;
+
+            /*
+            * Esperamos a que todas las imágenes
+            * conozcan sus dimensiones reales.
+            */
+            const loaded = images.every(img =>
+                img.naturalWidth > 0 &&
+                img.naturalHeight > 0
+            );
+
+            if (!loaded) return;
+
+            /*
+            * Sumamos los aspect ratios:
+            *
+            * width / height
+            */
+            const totalRatio = images.reduce(
+                (sum, img) => {
+                    return sum +
+                        (img.naturalWidth / img.naturalHeight);
+                },
+                0
+            );
+
+            /*
+            * Espacio ocupado por los gaps.
+            */
+            const totalGap =
+                gap * (images.length - 1);
+
+            /*
+            * Ancho disponible para imágenes.
+            */
+            const availableWidth =
+                rowWidth - totalGap;
+
+            /*
+            * Altura común de toda la fila.
+            */
+            const rowHeight =
+                availableWidth / totalRatio;
+
+            /*
+            * Aplicamos el tamaño proporcional
+            * a cada imagen.
+            */
+            images.forEach(img => {
+
+                const ratio =
+                    img.naturalWidth /
+                    img.naturalHeight;
+
+                const width =
+                    rowHeight * ratio;
+
+                img.style.width =
+                    `${width}px`;
+
+                img.style.height =
+                    `${rowHeight}px`;
+            });
+
+        });
+    }
+
+
+    /*
+    * Cuando cargan las imágenes.
+    */
+    window.addEventListener(
+        'load',
+        justifyImageRows
+    );
+
+
+    /*
+    * Recalcular cuando cambia el tamaño
+    * de la ventana.
+    */
+    window.addEventListener(
+        'resize',
+        justifyImageRows
+    );
+
+
+    /*
+    * También recalculamos cuando cambia
+    * el tamaño real del contenedor.
+    */
+    const observer = new ResizeObserver(() => {
+        justifyImageRows();
+    });
+
+    document.querySelectorAll('.image-row')
+        .forEach(row => {
+            observer.observe(row);
+        });
+
+    </script>
     
 
 
